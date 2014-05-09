@@ -6,7 +6,14 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'sqlite3' 
+  #gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '3.1.0' 
+
+  gem 'spork-rails' ,'4.0.0'
+  gem 'guard-spork'  
+  gem 'childprocess'  
+
 end
 
 group :test do
