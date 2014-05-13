@@ -1,0 +1,110 @@
+@import "bootstrap"; 
+$grayMediumLight: #eaeaea;
+
+/*设置垂直滚动条*/
+html {
+  overflow-y: scroll;
+}
+/*设置顶部间距*/
+body {
+  padding-top: 160px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+/*class为.center的标签内容在页面居中显示*/
+.center {
+  text-align: center;
+  /*设置底部间距*/
+  h1{
+    margin-bottom: 30px;
+  }
+}
+ 
+/*设置行间距*/
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;  /*设置字体大小*/
+  letter-spacing: -2px; /*设置单词间距*/
+  margin-bottom: 30px; /*设置底部间距*/ 
+  text-align: center;  /*居中显示*/ 
+}
+
+h2 {
+  font-size: 1.2em;     /*设置字体大小*/
+  letter-spacing: -1px; /*设置单词间距*/
+  margin-bottom: 30px;  /*设置底部间距*/ 
+  text-align: center;   /*居中显示*/ 
+  font-weight: normal;  /*字体：正常*/ 
+  color: $gray-light;          /*设置字体颜色*/
+}
+
+p {  
+  line-height: 1.7;  /*设置行间距*/
+}
+
+/*设置id = logo 样式*/
+#logo {
+  float: left;          /*靠左对齐*/ 
+  margin-right: 10px;   /*设置右间距*/ 
+  font-size: 1.7em;     /*设置字体大小*/
+  color: #fff;          /*设置字体颜色*/
+  text-transform: uppercase;          /*改为大写*/ 
+  letter-spacing: -1px; /*设置单词间距*/ 
+  padding-top: 9px;     /*设置顶部间距*/ 
+  font-weight: bold;    /*字体：加粗*/ 
+  line-height: 1;       /*设置行间距*/
+  &:hover {   /*鼠标悬停样式*/
+    color: #0ff;          /*设置字体颜色*/
+    text-decoration: none;   
+  }
+}
+ 
+
+/*页面底部样式*/
+footer { 
+  margin-top: 45px;   /*设置上间距*/  
+  padding-top: 5px;   /*设置上间距*/ 
+  border-top: 1px solid $grayMediumLight;    
+  color: $gray-light;          /*设置字体颜色*/
+  a{  
+    color: $gray;          /*设置字体颜色*/
+    &:hover {  
+      color: #222;          /*设置字体颜色*/
+    } 
+  }
+  small {  
+    float: left;          /*靠左对齐*/ 
+  }
+  ul {  
+    float: right;          /*靠右对齐*/ 
+    list-style:none;
+    li {  
+      float: left;          /*靠左对齐*/ 
+      margin-left: 10px;   /*设置左间距*/  
+    }
+  } 
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
