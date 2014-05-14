@@ -7,7 +7,7 @@ html {
 }
 /*设置顶部间距*/
 body {
-  padding-top: 160px;
+  padding-top: 60px;
 }
 
 section {
@@ -45,6 +45,12 @@ h2 {
   text-align: center;   /*居中显示*/ 
   font-weight: normal;  /*字体：正常*/ 
   color: $gray-light;          /*设置字体颜色*/
+  a {  
+    color: #0066ff;          /*设置字体颜色*/
+    &:hover {  
+      color: #7700bb;          /*设置字体颜色*/
+    } 
+  }
 }
 
 p {  
@@ -75,7 +81,7 @@ footer {
   padding-top: 5px;   /*设置上间距*/ 
   border-top: 1px solid $grayMediumLight;    
   color: $gray-light;          /*设置字体颜色*/
-  a{  
+  a {  
     color: $gray;          /*设置字体颜色*/
     &:hover {  
       color: #222;          /*设置字体颜色*/
@@ -93,10 +99,16 @@ footer {
     }
   } 
 }
+  
+/*页面底部样式*/
+ul {   
+  li {  
+    color: #1002ff;          /*设置字体颜色*/
+    float: left;          /*靠右对齐*/ 
+    margin-left: 10px;    /*设置左间距*/   
+  } 
+}
    
-
-
-
 
 
 

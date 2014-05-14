@@ -2,42 +2,55 @@ require 'spec_helper'
 
 describe "StaticPages" do 
 
-  let(:base_title) {"Ruby on Rails Tutorial Demp App"}
   subject {page}
+
+  shared_examples_for "all static pages" do
+    it {should have_content(heading) } 
+    it {should have_title(full_title(page_title)) }
+  end
+
+  let(:base_title) {"Ruby on Rails Tutorial Demp App"}
   describe "Home page" do
     before {visit root_path}
+    let(:heading) {'Demp App'}
+    let(:page_title) {''}
     
-    it {should have_content('Demp App') } 
-    it {should have_title(full_title('')) } 
+    it_should_behave_like "all static pages"
     it {should_not have_title("| Home") }  
   end
 
   describe "Help page" do
     before {visit help_path}
-    
-    it {should have_content('Help') } 
-    it {should have_title(full_title('Help')) }    
+    let(:heading) {'Help'}
+    let(:page_title) {'Help'} 
   end
 
   describe "About page" do
-    it "should hava the content 'About Us'" do
-      visit about_path
-      expect(page).to have_content('About Us')
-    end
-    it "should hava the title 'About'" do
-      visit about_path
-      expect(page).to have_title("#{base_title} | About")
-    end
+    before {visit about_path}
+    let(:heading) {'About Us'}
+    let(:page_title) {'About'}  
   end
 
   describe "Contact page" do
-    it "should hava the content 'Contact'" do
-      visit contact_path
-      expect(page).to have_content('Contact')
-    end
-    it "should hava the title 'Contact'" do
-      visit contact_path
-      expect(page).to have_title("#{base_title} | Contact")
-    end
+    before {visit contact_path}
+    let(:heading) {'Contact'}
+    let(:page_title) {'Contact'}   
+  end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    #click_link "关于"
+    #expect(page).to have_title(full_title('About Us')) 
+    #click_link "帮助"
+    #expect(page).to have_title(full_title('Help'))
+    #click_link "联系"
+    #expect(page).to have_title(full_title('Contact'))
+    #click_link "注册"
+    #expect(page).to have_title(full_title('Sign up'))
+    #click_link "首页"
+    click_link "Sign up now!"
+    expect(page).to have_title(full_title('Sign up'))
+    click_link "Demo app"
+    expect(page).to have_title(full_title('')) 
   end
 end
