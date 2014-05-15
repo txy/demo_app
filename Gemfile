@@ -1,7 +1,12 @@
 source 'https://rubygems.org'
+#source 'http://rubygems.org'
+#source 'http://gems.github.com'
 
 gem 'rails', '3.2.3'
 gem 'bootstrap-sass' ,'3.1.1'
+gem 'bcrypt'   
+gem 'bcrypt-ruby'  ,'3.1.5'
+#哈希函数bcrypt对密码加密
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
