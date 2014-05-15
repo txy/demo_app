@@ -39,6 +39,17 @@ describe "User" do
 
     it {should_not be_valid}  
   end 
+ 
+  #测试邮箱保存到数据库中转换为小写
+  describe "email address with mixed case" do
+    let(:mixed_case_email) {"Foo@ExAMPle.coM"}
+    it "should be saved as all lower-case" do
+      @user.email = mixed_case_email
+      @user.save
+      @user_reload = User.find_by_id(@user.id)
+      expect(@user_reload.email).to eq mixed_case_email.downcase
+    end 
+  end 
   #测试密码是否正确
   describe "return value of authenticate method " do
     #保存
@@ -78,7 +89,7 @@ describe "User" do
   #email不符合格式
   describe "when email format is invalid" do
     it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@var..com
                      foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
         @user.email = invalid_address
