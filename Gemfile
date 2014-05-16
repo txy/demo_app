@@ -4,26 +4,28 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'bootstrap-sass' ,'3.1.1'
-gem 'bcrypt'   
+gem 'bcrypt'       ,'3.1.7'
 gem 'bcrypt-ruby'  ,'3.1.5'
 #哈希函数bcrypt对密码加密
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
-  gem 'sqlite3' 
+  gem 'sqlite3'  ,'1.3.9'
   #gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '3.1.0' 
 
   gem 'spork-rails' ,'4.0.0'
-  gem 'guard-spork'  
-  gem 'childprocess'  
+  gem 'guard-spork'  , '1.5.1'
+  gem 'childprocess'  ,'0.5.3'
 
 end
 
 group :test do
   gem 'selenium-webdriver' , '2.35.1' 
   gem 'capybara', '2.1.0'
+  #预构件
+  gem 'factory_girl_rails' , '4.4.1'
 end
  
 

@@ -34,4 +34,11 @@ DemoApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  #设置耗时因子为最小
+  #ActiveModel::SecurePassword.min_cost = true
+  #require 'bcrypt'  
+  #silence_warnings do  
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST  
+  #end  
 end
