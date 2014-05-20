@@ -25,6 +25,12 @@ describe "UserPages" do
         #click_button "Create my account"
         #final = User.count
         #expect(inital).to eq final
+      end 
+      #测试错误提示
+      describe "after submission" do 
+        before {click_button submit } 
+        it {should have_title('Sign up')} 
+        it {should have_content('error')} 
       end
     end
     #注册成功
@@ -37,6 +43,13 @@ describe "UserPages" do
       end
       it "should create a user " do 
         expect {click_button submit }.to change(User,:count).by(1)
+      end
+      #测试保存
+      describe "after saving the user" do 
+        before {click_button submit }
+        let(:user) { User.find_by_email('user@example.com') }
+        it {should have_title(user.name)} 
+        it {should have_selector('div.alert-success',text:'Welcome' ) } 
       end
     end
   end
