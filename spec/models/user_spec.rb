@@ -16,6 +16,7 @@ describe "User" do
   it {should respond_to(:password_digest)} #存在性测试 字段是否存在
   it {should respond_to(:password)} #存在性测试 字段是否存在
   it {should respond_to(:password_confirmation)} #存在性测试 字段是否存在
+  it {should respond_to(:remember_token)} #存在性测试 字段是否存在
   it {should respond_to(:authenticate)} #能够响应authenticate
   it {should be_valid} # 测试@user有效
   #测试邮箱满足格式要求
@@ -116,4 +117,12 @@ describe "User" do
     it {should_not be_valid } 
   end 
 
+  #
+  describe "remember token" do
+    before do
+      @user.save
+    end  
+    its(:remember_token) {should_not be_blank} #等同 it {expect(@user.remember_token).not_to be_blank}
+
+  end  
 end

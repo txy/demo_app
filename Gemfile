@@ -6,6 +6,13 @@ gem 'rails', '3.2.3'
 gem 'bootstrap-sass' ,'3.1.1'
 gem 'bcrypt'       ,'3.1.7'
 gem 'bcrypt-ruby'  ,'3.1.5'
+
+group :development  do
+  gem 'pry' #测试
+  #gem 'pry-remote'
+  gem 'pry-nav' ,'0.2.3' #单步测试
+  #gem 'pry-rails'  #让binding.pry停住在页面视图
+end
 #哈希函数bcrypt对密码加密
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

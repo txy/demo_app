@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email =email.downcase } 
+  before_create :create_remember_token
   #另一种写法 
   #before_save{email.downcase!}
   attr_accessible :email, :name ,:password,:password_confirmation,
@@ -14,4 +15,15 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6} #最小长度6
   #has_many :microposts #user与 Microposts 1:n
   has_secure_password
+
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+  def User.hash(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+  private 
+    def create_remember_token
+      self.remember_token = User.hash(User.new_remember_token)
+    end
 end

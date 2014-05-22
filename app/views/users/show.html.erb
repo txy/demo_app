@@ -1,5 +1,6 @@
 <% provide(:title, @user.name)%>
 <p id="notice"><%= notice %></p>
+<%# require 'pry' ; binding.pry %>
 <div class="row">
   <aside class="span4">
     <section> 
@@ -22,4 +23,4 @@
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %><%
