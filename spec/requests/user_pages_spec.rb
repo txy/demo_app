@@ -90,6 +90,15 @@ describe "UserPages" do
       specify {expect(user.reload.name).to  eq new_name}
       specify {expect(user.reload.email).to eq new_email}
     end
+    #测试管理员属性是否不能修改
+    describe "with valid information" do 
+      let(:params) do
+        {user: {admin: true ,password: user.password,
+               confirmation: user.password}} 
+      end
+      before {put user_path(user) ,params } 
+      specify {expect(user.reload).not_to be_admin }
+    end 
   end
 
   #index页面

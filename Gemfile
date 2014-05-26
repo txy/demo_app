@@ -26,6 +26,7 @@ end
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'sqlite3'  ,'1.3.9'
+  # gem 'rspec-rails','2.13.1'
   #gem 'pg', '0.15.1'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '3.1.0' 
@@ -41,6 +42,10 @@ group :test do
   gem 'capybara', '2.1.0'
   #预构件
   gem 'factory_girl_rails' , '4.4.1'
+  ##
+  #gem 'cucumber-rails' , '1.4.0', :require => false
+  ##测试数据库清空工具
+  #gem 'database_cleaner', github: 'bmabey/database_cleaner' 
 end
  
 
@@ -60,6 +65,10 @@ gem 'jquery-rails' ,'2.2.1'
 
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
+
+#group :doc do
+#  gem 'sdoc', '0.3.20' ,require:false
+#end
 
 group :production do
   gem 'pg', '0.15.1'
