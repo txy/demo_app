@@ -9,6 +9,10 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end 
+  #判断是否是当前用户
+  def current_user?(user)
+    user == current_user
+  end 
   def current_user=(user)
     @current_user = user
   end 
@@ -21,6 +25,14 @@ module SessionsHelper
     current_user.update_attribute(:remember_token, User.hash(User.new_remember_token))
     self.current_user = nil
     cookies.delete(:remember_token)
+  end
+  #返回之前页面
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+  def store_location 
+    session[:return_to] = request.fullpath if request.get?
   end
 end
 

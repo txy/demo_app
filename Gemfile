@@ -3,9 +3,17 @@ source 'https://rubygems.org'
 #source 'http://gems.github.com'
 
 gem 'rails', '3.2.3'
+#网站框架
 gem 'bootstrap-sass' ,'3.1.1'
+#分页
+gem 'will_paginate' ,'3.0.4'
+#设置will_paginate使用bootstrap分页样式
+gem 'bootstrap-will_paginate' ,'0.0.9'
+#加密工具
 gem 'bcrypt'       ,'3.1.7'
 gem 'bcrypt-ruby'  ,'3.1.5'
+#创建实例
+gem 'faker' ,'1.3.0'
 
 group :development  do
   gem 'pry' #测试

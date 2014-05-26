@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   #另一种写法 
   #before_save{email.downcase!}
   attr_accessible :email, :name ,:password,:password_confirmation,
-                  :password_digest #定义属性访问器、获取和设定的方法
+                  :password_digest,:admin #定义属性访问器、获取和设定的方法
   validates :name, presence: true,   #validates(:name,presence: true)   非空
                    length: {maximum: 50} #长度50
   #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i   

@@ -18,7 +18,17 @@ describe "User" do
   it {should respond_to(:password_confirmation)} #存在性测试 字段是否存在
   it {should respond_to(:remember_token)} #存在性测试 字段是否存在
   it {should respond_to(:authenticate)} #能够响应authenticate
+  it {should respond_to(:admin)} #存在性测试 字段是否存在
   it {should be_valid} # 测试@user有效
+  it {should_not be_admin} #测试是否是管理员
+  #管理员权限判断
+  describe "with admin attribute set to 'true' " do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end 
+    it {should be_admin} #测试是否是管理员
+  end 
   #测试邮箱满足格式要求
   describe "when email format is valid" do
     it "should be valid" do
