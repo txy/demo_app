@@ -9,6 +9,13 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end 
+  def signed_in_user
+    #redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    unless signed_in?
+      store_location 
+      redirect_to signin_url , notice: "Please sign in."
+    end
+  end
   #判断是否是当前用户
   def current_user?(user)
     user == current_user

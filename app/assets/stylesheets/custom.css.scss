@@ -197,3 +197,37 @@ input {
   } 
 }
 
+/*微博样式*/
+.microposts { 
+  list-style:none;
+  margin: 10px 0 0 0 ;/*设置4边间距*/ 
+  li {
+    padding: 10px 0; /*设置间距*/ 
+    border-top: 1px solid #e8e8e8; /*顶端边界宽度1 颜色e8e8e8*/ 
+  }
+  .content {
+    display:block;
+  }
+  .timestamp {
+    color: $gray-light;          /*设置字体颜色*/
+  }
+  .gravatar {
+    float: left;          /*靠左对齐*/ 
+    margin-right: 10px;   /*设置右间距*/ 
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;   /*设置底间距*/ 
+  }
+}
+
+
+
+
+
+
+
+

@@ -19,8 +19,44 @@ describe "User" do
   it {should respond_to(:remember_token)} #存在性测试 字段是否存在
   it {should respond_to(:authenticate)} #能够响应authenticate
   it {should respond_to(:admin)} #存在性测试 字段是否存在
+  it {should respond_to(:microposts)} #存在性测试 字段是否存在
+  it {should respond_to(:feed)} #存在性测试 字段是否存在
   it {should be_valid} # 测试@user有效
   it {should_not be_admin} #测试是否是管理员
+  #测试微博次序
+  describe "micropost associations" do
+    before do
+      @user.save
+    end 
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end 
+    #测试微博次序
+    it "should have the right microposts in the right order" do
+      expect(@user.microposts.to_a).to eq [newer_micropost,older_micropost]
+    end
+    #删除用户后用户微博也删除掉了
+    it "should destroy associated microposts" do
+      microposts = @user.microposts.to_a  #复制@user.microposts给microposts
+      @user.destroy                       #删除用户
+      expect(microposts).not_to be_empty  #microposts不为空
+      microposts.each do |micropost|
+        expect(Micropost.where(id: micropost.id)).to be_empty  #Micropost中找不到对应的microposts
+      end
+    end
+    #只显示登录用户的微博，不显示其他用户的微博
+    describe "status" do
+      let!(:unfollowed_post) do 
+        FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+      end 
+      its(:feed) {should include(newer_micropost) }
+      its(:feed) {should include(older_micropost) }
+      its(:feed) {should_not include(unfollowed_post) }
+    end
+  end 
   #管理员权限判断
   describe "with admin attribute set to 'true' " do
     before do

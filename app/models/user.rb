@@ -13,8 +13,12 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX }, #邮箱格式
                     uniqueness: {case_sensitive: false} #唯一性 不区分大小写 
   validates :password, length: {minimum: 6} #最小长度6
-  #has_many :microposts #user与 Microposts 1:n
+  has_many :microposts ,dependent: :destroy#user与 Microposts 1:n 删除user则删除对应的Microposts
   has_secure_password
+
+  def feed
+    Micropost.where("user_id = ?",id)
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

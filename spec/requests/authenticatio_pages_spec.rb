@@ -59,6 +59,20 @@ describe "AuthenticatioPages" do
     #没有登录
     describe "for non-signed-in users" do  
       let(:user) { FactoryGirl.create(:user) }
+      #测试Microposts的controller
+      describe "in the Microposts controller" do
+        #测试没有登录没有create Micropost权限
+        describe "submitting to the create action" do 
+          before {post microposts_path } 
+          #post是否相应转向登录页面
+          specify {expect(response).to redirect_to(signin_path) }
+        end
+        #测试没有登录没有destroy Micropost权限
+        describe "submitting to the destroy action" do 
+          before {delete micropost_path(FactoryGirl.create(:micropost) ) }  
+          specify {expect(response).to redirect_to(signin_path) }
+        end
+      end
       describe "in the Users controller" do  
         #测试没有登录没有edit权限
         describe "visiting the edit page" do 
